@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_details" pageWidth="400" pageHeight="792" columnWidth="360" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="64f5e4e5-ad82-4ea8-9b20-0066740c0822">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Report2"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<parameter name="role" class="java.lang.Integer">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT public.tbl_user.name_user,
+	public.tbl_user.id_user,
+	public.tbl_user.password,
+	public.tbl_user.id_role,
+	public.role.name
+FROM public.tbl_user
+	INNER JOIN public.role ON 
+	 public.tbl_user.id_role = public.role.id_role
+	 WHERE tbl_user.id_role =$P{role}]]>
+	</queryString>
+	<field name="name_user" class="java.lang.String"/>
+	<field name="id_user" class="java.lang.Long"/>
+	<field name="password" class="java.lang.String"/>
+	<field name="id_role" class="java.lang.Long"/>
+	<field name="name" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="280" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#124D43" uuid="92aa5767-6fc6-4ca1-a849-0180e0172596"/>
+				<box>
+					<pen lineWidth="1.5" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bernard MT Condensed" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Password]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="80" y="0" width="200" height="30" forecolor="#FFFFFF" backcolor="#124D43" uuid="7b6b48c2-f02d-4196-a258-d56f2f1f48a5"/>
+				<box>
+					<pen lineWidth="1.5" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bernard MT Condensed" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name User]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="80" height="30" forecolor="#FFFFFF" backcolor="#124D43" uuid="d363a9ca-0761-4742-b932-dedfceb101a9"/>
+				<box>
+					<pen lineWidth="1.5" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bernard MT Condensed" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id User]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="80" height="30" uuid="70ef8396-661d-4ae8-b9e6-b28b50921648"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double" lineColor="#18414A"/>
+					<topPen lineWidth="1.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_user}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="0" width="200" height="30" uuid="05811ffd-ee50-4e35-84da-1b7ef17eef11"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double" lineColor="#18414A"/>
+					<topPen lineWidth="1.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name_user}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="0" width="90" height="30" uuid="929d0042-d07a-443c-be58-32c89bee4628"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double" lineColor="#18414A"/>
+					<topPen lineWidth="1.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{password}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

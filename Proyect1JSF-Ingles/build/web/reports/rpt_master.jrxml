@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_master" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="da7388a2-0016-4404-9de1-2bf4e8e54020">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[cHVibGljLnJvbGUgQVMgLDI1MywxMiw5YTU0MzM0ZC0zNjQ0LTQyNTctYTdkYy1jNDhmNTgwYmM4
+ZWU7]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Report2"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT public.role.id_role,
+	public.role.name
+FROM public.role]]>
+	</queryString>
+	<field name="id_role" class="java.lang.Long"/>
+	<field name="name" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="190" y="24" width="185" height="30" forecolor="#084739" uuid="ae946e8d-fd8f-4d52-bd9e-fb4840747680"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bodoni MT Black" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[User for Role]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="122" splitType="Stretch">
+			<textField>
+				<reportElement x="120" y="0" width="80" height="30" uuid="2db0a1b6-bb2e-4ea4-8842-9b12ea51953e"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#1C857E"/>
+					<topPen lineWidth="1.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bodoni MT" size="12" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_role}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="0" width="180" height="30" uuid="07fc238e-5bf5-4477-b40e-250714d6ce0b"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#1C857E"/>
+					<topPen lineWidth="1.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bodoni MT" size="12" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="10" y="0" width="100" height="30" forecolor="#FFFFFF" backcolor="#23544E" uuid="ab7a2a24-f743-4dd9-a939-e5db39323a5e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bodoni MT Black" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id User:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="280" y="0" width="100" height="30" forecolor="#FFFFFF" backcolor="#23544E" uuid="c4a5cbc5-b889-49ad-b3d2-cbd0ca534769"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bodoni MT Black" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name:]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="0" y="50" width="380" height="70" uuid="0a63a347-eaa2-4ffa-b572-e56a6d2d9204"/>
+				<subreportParameter name="role">
+					<subreportParameterExpression><![CDATA[$F{id_role}.intValue()]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["rpt_details.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

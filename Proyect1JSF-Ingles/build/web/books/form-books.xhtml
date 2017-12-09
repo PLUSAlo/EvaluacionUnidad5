@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+        <h:head>
+             <title>#{str.formTitle}</title>
+        </h:head>
+
+        <h:body>
+            <ui:composition template="/templates/template.xhtml">
+                <ui:define name="container">
+                    <h2>#{str.bookFormHeader}</h2>
+                   
+                    
+                    <p:fieldset legend="#{str.bookLegendForm}">
+                         <h:form>
+                             <h:panelGrid columns="1">
+                                 
+                                 <p:inputText placeholder="#{str.bookNamePrompt}" value="#{bookBean.book.nameBook}"></p:inputText>
+                                 
+                                 <p:inputText placeholder="#{str.editorialPrompt}" value="#{bookBean.book.editorial}"></p:inputText>
+                                 <p:inputText placeholder="#{str.editionPrompt}" value="#{bookBean.book.edition}"></p:inputText> 
+                                  
+                                 
+                                 <p:selectOneMenu value="#{bookBean.book.author.idAuthor}">
+                                     <f:selectItems value="#{bookBean.authors}" var="b" itemLabel="#{b.name}" itemValue="#{b.idAuthor}"></f:selectItems>                                     
+                                 </p:selectOneMenu>  
+                                 
+                             </h:panelGrid>
+                             <p:commandButton value="#{str.buttonSave}" action="#{bookBean.save()}" />
+                             <p:commandButton value="#{str.buttonDelete}" action="#{bookBean.delete()}" />
+                             <p:commandButton value="#{str.buttonCancel}" action="#{bookBean.cancel()}" />
+                          </h:form>
+                    </p:fieldset>
+                </ui:define>
+            </ui:composition>
+        </h:body>
+</html>
